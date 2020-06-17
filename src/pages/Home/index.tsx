@@ -146,7 +146,7 @@ const Home = () => {
             )}
             {loadingPreview && (
               <PreviewMeme>
-                <BounceLoader color='#4395d8' />
+                <BounceLoader color='#FC771D' />
               </PreviewMeme>
             )}
             {selectedTemplate && (

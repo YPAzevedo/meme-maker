@@ -29,6 +29,10 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   animation: 0.7s ${fadeInFromLeft} ease;
+
+  img {
+    margin-top: 10%;
+  }
 `;
 
 export const GeneratedMeme = styled.div`
@@ -53,7 +57,7 @@ export const Card = styled.div`
   padding: 24px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.198836);
   border-radius: 8px;
-  margin-top: 16px;
+  margin-bottom: 50px;
 
   h2 {
     animation: 0.7s ${fadeInFromLeft} ease;
@@ -73,11 +77,10 @@ export const Templates = styled.div`
   align-items: center;
   padding: 0 8px;
 
-  margin-bottom: 30px;
   animation: 0.7s ${fadeInFromBottom} ease;
 
-  ::-webkit-scrollbar {
-    display: none;
+  & + div {
+    margin-bottom: 30px;
   }
 
   button {
@@ -86,7 +89,7 @@ export const Templates = styled.div`
     margin-right: 10px;
 
     &.selected-template {
-      border: 2px solid #4395d8;
+      border: 2px solid #FC771D;
     }
 
     img {
@@ -113,7 +116,7 @@ export const Button = styled.button`
   width: 100%;
   height: 40px;
   border-radius: 8px;
-  background: #4395d8;
+  background: #FC771D;
   color: #ffffff;
   border: 0;
   font-size: 16px;
@@ -122,6 +125,6 @@ export const Button = styled.button`
   transition: background 0.2s ease-in;
 
   &:hover {
-    background: #3672a3;
+    background: #D85815;
   }
 `;
