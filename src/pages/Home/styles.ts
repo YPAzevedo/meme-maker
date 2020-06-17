@@ -46,6 +46,8 @@ export const PreviewMeme = styled.div`
   margin-bottom: 20px;
   min-height: 200px;
 
+  margin-top: 30px;
+
   img {
     animation: 0.7s ${fadeInFromLeft} ease;
   }
@@ -78,10 +80,6 @@ export const Templates = styled.div`
   padding: 0 8px;
 
   animation: 0.7s ${fadeInFromBottom} ease;
-
-  & + div {
-    margin-bottom: 30px;
-  }
 
   button {
     border: 0;
