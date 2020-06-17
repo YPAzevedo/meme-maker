@@ -1,5 +1,16 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
+interface DefaultTheme {
+  theme: {
+    title: string;
+    colors: {
+      primary: string;
+      header: string;
+      background: string;
+      text: string;
+    };
+  };
+}
 
 export default createGlobalStyle`
   * {
@@ -9,9 +20,13 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    background: #F2F2F2;
+    background: ${(props: DefaultTheme) => props.theme.colors.background};
     --webkit-font-smoothing: antialiased;
     font-family: Roboto, sans-serif;
+  }
+
+  body, div {
+    transition: background 0.5s ease;
   }
 
   button {

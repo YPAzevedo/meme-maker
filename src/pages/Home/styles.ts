@@ -1,5 +1,19 @@
 import styled, { keyframes } from "styled-components";
 
+interface DefaultTheme {
+  theme: {
+    title: string;
+    colors: {
+      primary: string;
+      header: string;
+      background: string;
+      background2: string;
+      background3: string;
+      text: string;
+    };
+  };
+}
+
 const fadeInFromBottom = keyframes`
   0% {
     opacity: 0;
@@ -24,7 +38,6 @@ const fadeInFromLeft = keyframes`
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,7 +67,7 @@ export const PreviewMeme = styled.div`
 `;
 
 export const Card = styled.div`
-  background: #ffffff;
+  background: ${(props: DefaultTheme) => props.theme.colors.background2};
   width: 550px;
   padding: 24px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.198836);
@@ -64,13 +77,13 @@ export const Card = styled.div`
   h2 {
     animation: 0.7s ${fadeInFromLeft} ease;
     font-size: 22px;
-    color: #392d2d;
+    color: ${(props: DefaultTheme) => props.theme.colors.text};
     margin-bottom: 16px;
   }
 `;
 
 export const Templates = styled.div`
-  background: #eeeeee;
+  background: ${(props: DefaultTheme) => props.theme.colors.background3};
   display: flex;
   height: 90px;
   width: 100%;
@@ -87,7 +100,7 @@ export const Templates = styled.div`
     margin-right: 10px;
 
     &.selected-template {
-      border: 2px solid #FC771D;
+      border: 2px solid ${(props: DefaultTheme) => props.theme.colors.primary};
     }
 
     img {
@@ -107,6 +120,11 @@ export const Form = styled.form`
     height: 40px;
     padding: 0 10px;
     margin-bottom: 10px;
+    background: ${(props: DefaultTheme) => props.theme.colors.background3};
+
+    &::placeholder {
+      color: ${(props: DefaultTheme) => props.theme.colors.text};
+    }
   }
 `;
 
@@ -114,8 +132,8 @@ export const Button = styled.button`
   width: 100%;
   height: 40px;
   border-radius: 8px;
-  background: #FC771D;
-  color: #ffffff;
+  background: ${(props: DefaultTheme) => props.theme.colors.primary};
+  color: #FFFFFF;
   border: 0;
   font-size: 16px;
   font-weight: 500;
@@ -123,6 +141,6 @@ export const Button = styled.button`
   transition: background 0.2s ease-in;
 
   &:hover {
-    background: #D85815;
+    background: #d85815;
   }
 `;

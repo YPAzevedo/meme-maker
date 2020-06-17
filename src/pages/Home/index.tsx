@@ -1,9 +1,17 @@
-import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  ChangeEvent,
+  FormEvent,
+} from "react";
+import { ThemeContext } from "styled-components";
 import axios from "axios";
 import qs from "qs";
 import { BounceLoader } from "react-spinners";
 
 import logo from "../../assets/logo.svg";
+import logoDark from "../../assets/logo-dark.svg";
 
 import {
   Container,
@@ -23,6 +31,7 @@ interface TemplateData {
 }
 
 const Home = () => {
+  const theme = useContext(ThemeContext);
   const [templates, setTemplates] = useState<TemplateData[]>([]);
   const [selectedTemplate, setSelectedTemplate] = useState<TemplateData | null>(
     null
@@ -107,7 +116,7 @@ const Home = () => {
 
   return (
     <Container>
-      <img src={logo} alt="meme-maker" />
+      <img src={theme.title === 'dark' ? logoDark : logo} alt="meme-maker" />
 
       <Card>
         {generatedMeme && (
@@ -146,7 +155,7 @@ const Home = () => {
             )}
             {loadingPreview && (
               <PreviewMeme>
-                <BounceLoader color='#FC771D' />
+                <BounceLoader color="#FC771D" />
               </PreviewMeme>
             )}
             {selectedTemplate && (
