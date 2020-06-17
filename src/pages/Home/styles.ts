@@ -30,8 +30,8 @@ export const Container = styled.div`
   align-items: center;
   animation: 0.7s ${fadeInFromLeft} ease;
 
-  img {
-    margin-top: 10%;
+  > img {
+    margin-top: 50px;
   }
 `;
 
