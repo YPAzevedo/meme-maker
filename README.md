@@ -1,7 +1,7 @@
-![meme-maker-logo](demo/logo.png)
+![meme-maker-logo](demo/mememaker-logo.png)
 
 ## Preview
-![mememaker](demo/demo.gif)
+![mememaker](demo/mememaker.gif)
 
 ## Techs 💻
 - React
