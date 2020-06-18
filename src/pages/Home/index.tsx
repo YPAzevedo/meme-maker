@@ -10,6 +10,8 @@ import axios from "axios";
 import qs from "qs";
 import { BounceLoader } from "react-spinners";
 
+import { useToast } from "../../hooks/toast";
+
 import logo from "../../assets/logo.svg";
 import logoDark from "../../assets/logo-dark.svg";
 
@@ -32,6 +34,7 @@ interface TemplateData {
 
 const Home = () => {
   const theme = useContext(ThemeContext);
+  const { addToast } = useToast();
   const [templates, setTemplates] = useState<TemplateData[]>([]);
   const [selectedTemplate, setSelectedTemplate] = useState<TemplateData | null>(
     null
@@ -47,8 +50,14 @@ const Home = () => {
       .then((response) => {
         setTemplates(response.data.data.memes as TemplateData[]);
       })
-      .catch((err) => console.log(err));
-  }, []);
+      .catch((err) => {
+        addToast({
+          type: "error",
+          title: "Load error",
+          description: "Something went wrong getting the memes template",
+        });
+      });
+  }, [addToast]);
 
   const handleSelectTemplate = async (template: TemplateData) => {
     setSelectedTemplate(template);
@@ -73,7 +82,11 @@ const Home = () => {
       setPreviewMeme(res.data?.data?.url);
       setLoadingPreview(false);
     } catch (err) {
-      console.log(err);
+      addToast({
+        type: "error",
+        title: "Load error",
+        description: "Could not load preview",
+      });
       setLoadingPreview(false);
     }
   };
@@ -100,10 +113,18 @@ const Home = () => {
       const res = await axios.get(
         `https://api.imgflip.com/caption_image?${params}`
       );
-      console.log(res.data.data.url);
       setGeneratedMeme(res.data?.data?.url);
+      addToast({
+        type: "success",
+        title: "Meme generated!",
+        description: "Meme successfully generated",
+      });
     } catch (err) {
-      console.log(err);
+      addToast({
+        type: "error",
+        title: "Server error",
+        description: "Something went generating your meme",
+      });
     }
   };
 
@@ -116,7 +137,7 @@ const Home = () => {
 
   return (
     <Container>
-      <img src={theme.title === 'dark' ? logoDark : logo} alt="meme-maker" />
+      <img src={theme.title === "dark" ? logoDark : logo} alt="meme-maker" />
 
       <Card>
         {generatedMeme && (

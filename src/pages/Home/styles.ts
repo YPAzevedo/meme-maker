@@ -116,7 +116,7 @@ export const Form = styled.form`
   input {
     width: 100%;
     border-radius: 8px;
-    border: 1px solid #dbdbdb;
+    border: 1px solid ${(props: DefaultTheme) => props.theme.colors.background};
     height: 40px;
     padding: 0 10px;
     margin-bottom: 10px;

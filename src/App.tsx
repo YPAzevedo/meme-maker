@@ -4,6 +4,8 @@ import { ThemeProvider } from "styled-components";
 import Home from "./pages/Home";
 import Header from "./components/Header";
 
+import { ToastProvider } from "./hooks/toast";
+
 import light from "./styles/themes/light";
 import dark from "./styles/themes/dark";
 
@@ -19,8 +21,10 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Header switchTheme={switchTheme} />
-      <Home />
+      <ToastProvider>
+        <Header switchTheme={switchTheme} />
+        <Home />
+      </ToastProvider>
     </ThemeProvider>
   );
 };
