@@ -14,7 +14,6 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ switchTheme }) => {
   const theme = useContext(ThemeContext);
-  console.log(theme);
 
   return (
     <Container>
