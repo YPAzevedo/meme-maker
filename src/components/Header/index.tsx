@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({ switchTheme }) => {
       <img src={theme.title === 'dark' ? logoDark : logo} alt="logo" />
 
       <Switch
-        checked={theme?.title === "light"}
+        checked={theme?.title === "dark"}
         onChange={switchTheme}
         size={50}
       />
